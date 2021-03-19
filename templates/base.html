@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/bootstrap.min.united.css') }}">
+    {%block css%} {%endblock%}
+    <script src="{{url_for('static',filename='js/boostrap.min.js')}}"></script>
+    <script src="{{url_for('static',filename='js/jquery.min.js')}}"></script>
+
+    <title>SheepFarm Team</title>
+</head>
+
+{%block navbar %}
+{%endblock%}
+
+
+<body>
+    {%block content %} {%endblock%}
+</body>
+<hr>
+<!-- <footer>Developed by <a href="https:facebook.com/khanh.ngo0212">Quốc Khánh</a></footer> -->
+
+</html>
