@@ -10,13 +10,16 @@ def home():
 
 @app.route('/newsfeeds')
 def news_feed():
-    with open('api/data/trending/health.json', 'r') as file:
+    with open('api/data/trending/news.json', 'r') as file:
         data = json.load(file)
 
         # data = json.dumps(data)
     result = data['results']
-
-    return render_template('newsfeeds.html')
+    # for item in result:
+    #     hours = item['published_date_diff']
+    #     title = item['title']
+    #     print(item['author_details'])
+    return render_template('newsfeeds.html', data=result)
 
 
 @app.route('/login')

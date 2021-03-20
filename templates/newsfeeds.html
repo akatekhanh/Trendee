@@ -4,84 +4,204 @@
 
 <div class="container-fluid gedf-wrapper">
     <div class="row">
-        <div class="col-md-3">
-            <div class="card">
-                <div class="card-body">
-                    <div class="h5">@LeeCross</div>
-                    <div class="h7 text-muted">Fullname : Miracles Lee Cross</div>
-                    <div class="h7">Developer of web applications, JavaScript, PHP, Java, Python, Ruby, Java, Node.js,
-                        etc.
-                    </div>
-                </div>
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item">
-                        <div class="h6 text-muted">Followers</div>
-                        <div class="h5">5.2342</div>
-                    </li>
-                    <li class="list-group-item">
-                        <div class="h6 text-muted">Following</div>
-                        <div class="h5">6758</div>
-                    </li>
-                    <li class="list-group-item">Vestibulum at eros</li>
-                </ul>
-            </div>
-        </div>
-        <div class="col-md-6 gedf-main">
+        <div class="col-md-1 gedf-main"></div>
+
+        <!-- <div class="col-md-3"> -->
+        <div class="col-md-7 gedf-main">
             <!-- Post /////-->
-
-
             <!--- \\\\\\\Post-->
-            <div class="card gedf-card">
+            <div class="card text-center">
                 <div class="card-header">
-                    <div class="d-flex justify-content-between align-items-center">
-                        <div class="d-flex justify-content-between align-items-center">
-                            <div class="mr-2">
-                                <img class="rounded-circle" width="45" src="https://picsum.photos/50/50" alt="">
-                            </div>
-                            <div class="ml-2">
-                                <div class="h5 m-0">@LeeCross</div>
-                                <div class="h7 text-muted">Miracles Lee Cross</div>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="dropdown">
-                                <button class="btn btn-link dropdown-toggle" type="button" id="gedf-drop1"
-                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <i class="fa fa-ellipsis-h"></i>
+                    <ul class="nav nav-tabs card-header-tabs">
+                        <li class="nav-item">
+                            <a class="nav-link active">
+                                <button type="button" class="btn btn-outline-success">
+                                    <div class="row">
+                                        <div class="col-md-3 gedf-main">
+                                            <img src="/static/image/start1.png" alt="" style="width:25px;">
+                                        </div>
+                                        <div class="col-md-8 gedf-main">
+                                            Best
+                                        </div>
+                                    </div>
                                 </button>
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="gedf-drop1">
-                                    <div class="h6 dropdown-header">Configuration</div>
-                                    <a class="dropdown-item" href="#">Save</a>
-                                    <a class="dropdown-item" href="#">Hide</a>
-                                    <a class="dropdown-item" href="#">Report</a>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link">
+                                <button type="button" class="btn btn-outline-success">
+                                    <div class="row">
+                                        <div class="col-md-3 gedf-main">
+                                            <img src="/static/image/fire.png" alt="" style="width:25px;">
+                                        </div>
+                                        <div class="col-md-8 gedf-main">
+                                            Hot
+                                        </div>
+                                    </div>
+                                </button>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link">
+                                <button type="button" class="btn btn-outline-success">
+                                    <div class="row">
+                                        <div class="col-md-3 gedf-main">
+                                            <img src="/static/image/new.png" alt="" style="width:25px;">
+                                        </div>
+                                        <div class="col-md-8 gedf-main">
+                                            New
+                                        </div>
+                                    </div>
+                                </button>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="card-body">
+                    {%for item in data%}
+                    <div class="card gedf-card">
+                        <div class="card-header">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="mr-2">
+                                        <img class="rounded-circle" width="45" src="https://picsum.photos/50/50" alt="">
+                                    </div>
+                                    <div class="ml-2">
+                                        <div class="h5 m-0">
+                                            {%if item['author_details']['twitter']%}
+                                            @{{item['author_details']['twitter']['username']}}
+                                            {%else%}@Anonymous
+                                            {%endif%}
+                                        </div>
+                                        <div class="h7 text-muted">{{item['author_details']['author_name']}}</div>
+                                    </div>
+                                    <div class="ml-5">
+                                        <div class="h5 m-0"></div>
+                                        <div class="h7 text-muted"></div>
+                                    </div>
+                                    <div class="ml-5">
+                                        <div class="h6 m-0 text-info">Publisher Rank
+                                            :{{item['author_details']['publisher']['alexa_rank']}}</div>
+                                        <div class="h7 text-muted text-warning" style="font-size:10px;">Argv facebook
+                                            share: {{item['author_details']['publisher']['average_facebook_shares']}}
+                                        </div>
+                                        <div class="h7 text-muted text-warning" style="font-size:10px;">Domain
+                                            authority:
+                                            {{item['author_details']['publisher']['domain_authority']}} </div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="dropdown">
+                                        <button class="btn btn-link dropdown-toggle" type="button" id="gedf-drop1"
+                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <i class="fa fa-ellipsis-h"></i>
+                                        </button>
+                                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="gedf-drop1">
+                                            <div class="h6 dropdown-header">Configuration</div>
+                                            <a class="dropdown-item" href="#">Save</a>
+                                            <a class="dropdown-item" href="#">Hide</a>
+                                            <a class="dropdown-item" href="#">Report</a>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
+
+                        </div>
+
+                        <div class="card-body">
+
+                            <div class="text-muted h7 mb-2 ">
+                                <i class="fa fa-clock-o "></i> {{item['published_date_diff']}}
+                                <i class="fa "></i>Trending score:
+                                {{item['trending_score']}}
+                            </div>
+
+                            <h5 class="card-title">{{item['title']}}</h5>
+
+                            <p class="card-text">
+                                <img src="{{item['thumbnail']}}" alt="" width="100%;">
+                                <a href="{{item['url']}}" target="_blank"><i style="color:gray;">Go to article</i></a>
+                            </p>
+
+                            <div class="">
+                                <div class="d-flex justify-content-around ">
+                                    <!-- Facebook -->
+                                    <div class="d-flex d-flex-row">
+                                        <a href="http://scripteden.com/download/eden-ui/" target="_blank"
+                                            class="btn-social btn-facebook" style="margin-top:5px;margin-right:5px;"><i
+                                                class="fa fa-facebook"></i> </a>
+                                        <div class="d-flex-column">
+                                            <div class="">
+                                                <h6><small>Likes: {{item['facebook_likes']}}</small></h6>
+                                            </div>
+                                            <div class="">
+                                                <h6><small>Shares: {{item['facebook_shares']}}</small></h6>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="d-flex d-flex-row">
+                                        <a href="http://scripteden.com/download/eden-ui/" target="_blank"
+                                            class="btn-social btn-youtube" style="margin-top:5px;margin-right:5px;"><i
+                                                class="fa fa-youtube"></i> </a>
+                                        <div class="d-flex-column">
+                                            <div class="">
+                                                <h6><small>Likes: {{item['youtube_likes']}}</small></h6>
+                                            </div>
+                                            <div class="">
+                                                <h6><small>Shares: {{item['youtube_shares']}}</small></h6>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="d-flex d-flex-row">
+                                        <a href="http://scripteden.com/download/eden-ui/" target="_blank"
+                                            class="btn-social btn-twitter" style="margin-top:5px;margin-right:5px;"><i
+                                                class="fa fa-twitter"></i> </a>
+                                        <div class="d-flex-column">
+                                            <div class="">
+                                                <h6><small>Likes: {{item['twitter_likes']}}</small></h6>
+                                            </div>
+                                            <div class="">
+                                                <h6><small>Shares: {{item['twitter_shares']}}</small></h6>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+
+                                    <div class="d-flex d-flex-row">
+                                        <a href="http://scripteden.com/download/eden-ui/" target="_blank"
+                                            class="btn-social btn-reddit" style="margin-top:5px;margin-right:5px;"><i
+                                                class="fa fa-reddit"></i> </a>
+                                        <div class="d-flex-column">
+                                            <div class="">
+                                                <h6><small>Likes: {{item['reddit_likes']}}</small></h6>
+                                            </div>
+                                            <div class="">
+                                                <h6><small>Shares: {{item['reddit_shares']}}</small></h6>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                            </div>
+
+
+                        </div>
+                        <div class="card-footer">
+                            <a href="#" class="card-link"><i class="fa fa-gittip"></i> Like</a>
+                            <a href="#" class="card-link"><i class="fa fa-comment"></i> Comment</a>
+                            <a href="#" class="card-link"><i class="fa fa-mail-forward"></i> Share</a>
                         </div>
                     </div>
+                    <br>
+                    <br>
 
-                </div>
-
-                <div class="card-body">
-                    <div class="text-muted h7 mb-2"> <i class="fa fa-clock-o"></i> Hace 40 min</div>
-                    <a class="card-link" href="#">
-                        <h5 class="card-title">Totam non adipisci hic! Possimus ducimus amet, dolores illo ipsum quos
-                            cum.</h5>
-                    </a>
-
-                    <p class="card-text">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam sunt fugit reprehenderit
-                        consectetur exercitationem odio,
-                        quam nobis? Officiis, similique, harum voluptate, facilis voluptas pariatur dolorum tempora
-                        sapiente
-                        eius maxime quaerat.
-                        <a href="https://mega.nz/#!1J01nRIb!lMZ4B_DR2UWi9SRQK5TTzU1PmQpDtbZkMZjAIbv97hU"
-                            target="_blank">https://mega.nz/#!1J01nRIb!lMZ4B_DR2UWi9SRQK5TTzU1PmQpDtbZkMZjAIbv97hU</a>
-                    </p>
-                </div>
-                <div class="card-footer">
-                    <a href="#" class="card-link"><i class="fa fa-gittip"></i> Like</a>
-                    <a href="#" class="card-link"><i class="fa fa-comment"></i> Comment</a>
-                    <a href="#" class="card-link"><i class="fa fa-mail-forward"></i> Share</a>
+                    {%endfor%}
                 </div>
             </div>
             <!-- Post /////-->
@@ -92,25 +212,49 @@
         <div class="col-md-3">
             <div class="card gedf-card">
                 <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                        card's content.</p>
-                    <a href="#" class="card-link">Card link</a>
-                    <a href="#" class="card-link">Another link</a>
-                </div>
-            </div>
-            <div class="card gedf-card">
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                        card's content.</p>
-                    <a href="#" class="card-link">Card link</a>
-                    <a href="#" class="card-link">Another link</a>
+                    <h5 class="card-title">Top 5 trendings</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">Top 5 trendings over some social media</h6>
+                    <p class="card-text">
+                    <ul class="list-group">
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <a href="#">#trend1</a>
+                            <span class="badge badge-light badge-pill">
+                                <img src="/static/image/iconfinder_facebook_386622_1.png" style="height: 15px;">
+                            </span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <a href="#">#trend2</a>
+                            <span class="badge badge-light badge-pill">
+                                <img src="/static/image/iconfinder_tiktok_logo_app0_7024783_1.png"
+                                    style="height: 15px;">
+                            </span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <a href="#">#trend3</a>
+                            <span class="badge badge-light badge-pill">
+                                <img src="/static/image/iconfinder_facebook_386622_1.png" style="height: 15px;">
+                            </span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <a href="#">#trend4</a>
+                            <span class="badge badge-light badge-pill">
+                                <img src="/static/image/iconfinder_twitter_circle_294709_1.png" style="height: 15px;">
+                            </span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <a href="#">#trend5</a>
+                            <span class="badge badge-light badge-pill">
+                                <img src="/static/image/iconfinder_tiktok_logo_app0_7024783_1.png"
+                                    style="height: 15px;">
+                            </span>
+                        </li>
+                    </ul>
+                    </p>
+                    <a href="#" class="card-link">View more...</a>
                 </div>
             </div>
         </div>
+        <div class="col-md-1 gedf-main"></div>
     </div>
 </div>
 {%endblock%}
