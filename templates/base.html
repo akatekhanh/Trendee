@@ -4,16 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- <link rel="stylesheet" href="{{url_for('static', filename='css/bootstrap.min.united.css') }}"> -->
+    <link rel="stylesheet" href="{{url_for('static', filename='css/style.css') }}">
     <link rel="stylesheet" href="{{url_for('static', filename='css/icon.css') }}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    {%block css%} {%endblock%}
-    <script src="{{url_for('static',filename='js/boostrap.min.js')}}"></script>
-    <script src="{{url_for('static',filename='js/jquery.min.js')}}"></script>
-
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
     <!------ Include the above in your HEAD tag ---------->
 
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
@@ -38,9 +33,15 @@
 
 
 <body>
+    {%block login%}
+    {%endblock%}
+
     {%block newsfeeds %}
     {%endblock%}
-    {%block content %} {%endblock%}
+    {%block content %}
+    {%endblock%}
+    {%block detail %}
+    {%endblock%}
 </body>
 <hr>
 <!-- <footer>Developed by <a href="https:facebook.com/khanh.ngo0212">Quốc Khánh</a></footer> -->
