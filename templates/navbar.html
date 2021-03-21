@@ -11,19 +11,24 @@
     <div class="collapse navbar-collapse" id="navbarText">
       <ul class="navbar-nav mr-auto" style="margin-left: 30px;">
         <li class="nav-item active">
-          <a class="nav-link" href="#">Trending <span class="sr-only">(current)</span></a>
+          <a class="nav-link" href="/newsfeeds_trending" style="color:black">Trending <span
+              class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#" style="margin-left: 30px">News</a>
+          <a class="nav-link" href="/newsfeeds" style="margin-left: 30px; color:black">News</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/newsfeeds" style="margin-left: 30px; color:black">Content Market(next step)</a>
         </li>
       </ul>
       <span class="nav-item">
-        <a class="nav-link" href="#" style="color: #787e74;">View Info</a>
+        <a class="nav-link" href="#" style="color:black">View Info</a>
       </span>
       <span class="nav-item">
-        <a class="nav-link" href="{{ url_for('user.logout') }}" style="color: #787e74;">Hello,
+        <a class="nav-link" href="{{ url_for('user.logout') }}" style="color: black;">Logout,
           {{current_user.username}}</a>
       </span>
+
 
     </div>
     <ul class="navbar-nav">

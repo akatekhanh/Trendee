@@ -249,11 +249,23 @@
                     <h6 class="card-subtitle mb-2 text-muted">Top 5 News over some social media</h6>
                     <p class="card-text">
                     <ul class="list-group">
-                        {%for item in data%}
+                        {%for item in data[:6]%}
                         <li class="list-group-item d-flex justify-content-between align-items-center">
-                            <a style="color: #60b27f" href="#">#news1</a>
+                            <a style="color: #60b27f" href="{{item['url_article']}}">#{{data.index(item)}}.
+                                {{item['title']}}</a>
                             <span class="badge badge-light badge-pill">
+                                {%if data.index(item) == 0 %}
                                 <img src="/static/image/iconfinder_facebook_386622_1.png" style="height: 15px;">
+                                {%elif data.index(item) == 1 %}
+                                <img src="/static/image/iconfinder_twitter_circle_294709_1.png" style="height: 15px;">
+                                {%elif data.index(item) == 2 %}
+                                <img src="/static/image/iconfinder_twitter_circle_294709_1.png" style="height: 15px;">
+                                {%elif data.index(item) == 3 %}
+                                <img src="/static/image/iconfinder_tiktok_logo_app0_7024783_1.png"
+                                    style="height: 15px;">
+                                {%elif data.index(item) == 4 %}
+                                <img src="/static/image/iconfinder_facebook_386622_1.png" style="height: 15px;">
+                                {%endif%}
                             </span>
                         </li>
                         {%endfor%}
