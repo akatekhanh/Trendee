@@ -10,7 +10,7 @@
         <div class="col-md-7 gedf-main">
             <!-- Post /////-->
             <!--- \\\\\\\Post-->
-            <div class="card text-center">
+            <div class="card">
                 <div class="card-header">
                     <ul class="nav nav-tabs card-header-tabs">
                         <li class="nav-item">
@@ -57,12 +57,13 @@
                         </li>
                     </ul>
                 </div>
+
                 <div class="card-body">
                     {%for item in data%}
                     <div class="card gedf-card">
                         <div class="card-header">
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div class="d-flex justify-content-between align-items-center">
+                            <div class="d-flex justify-content-between">
+                                <div class="d-flex justify-content-between ">
                                     <div class="mr-2">
                                         <img class="rounded-circle" width="45" src="https://picsum.photos/50/50" alt="">
                                     </div>
@@ -109,7 +110,6 @@
                         </div>
 
                         <div class="card-body">
-
                             <div class="text-muted h7 mb-2 ">
                                 <i class="fa fa-clock-o "></i> {{item['published_date_diff']}}
                                 <i class="fa "></i>Trending score:
@@ -150,7 +150,7 @@
                                                 <h6><small>Likes: {{item['youtube_likes']}}</small></h6>
                                             </div>
                                             <div class="">
-                                                <h6><small>Shares: {{item['youtube_shares']}}</small></h6>
+                                                <h6><small>Views: {{item['youtube_views']}}</small></h6>
                                             </div>
                                         </div>
 
@@ -162,7 +162,7 @@
                                                 class="fa fa-twitter"></i> </a>
                                         <div class="d-flex-column">
                                             <div class="">
-                                                <h6><small>Likes: {{item['twitter_likes']}}</small></h6>
+                                                <h6><small>Likes:{{None}}</small></h6>
                                             </div>
                                             <div class="">
                                                 <h6><small>Shares: {{item['twitter_shares']}}</small></h6>
@@ -178,10 +178,11 @@
                                                 class="fa fa-reddit"></i> </a>
                                         <div class="d-flex-column">
                                             <div class="">
-                                                <h6><small>Likes: {{item['reddit_likes']}}</small></h6>
+                                                <h6><small>Total Likes: {{item['total_shares']}}</small></h6>
                                             </div>
                                             <div class="">
-                                                <h6><small>Shares: {{item['reddit_shares']}}</small></h6>
+                                                <h6><small>Total reactions:
+                                                        {{item['total_reactions_percentage']}}</small></h6>
                                             </div>
                                         </div>
 
@@ -193,10 +194,34 @@
 
                         </div>
                         <div class="card-footer">
-                            <a href="#" class="card-link"><i class="fa fa-gittip"></i> Like</a>
-                            <a href="#" class="card-link"><i class="fa fa-comment"></i> Comment</a>
-                            <a href="#" class="card-link"><i class="fa fa-mail-forward"></i> Share</a>
+                            <div class="row">
+                                <div class="col-md-6 gedf-main">
+                                    <div class="row">
+                                        <div class="col-md-2 gedf-main">
+                                        </div>
+                                        <div class="col-md-3  gedf-main">
+                                            <a href="#" class="card-link"><i class="fa fa-arrow-up"></i> Up</a>
+                                        </div>
+                                        <div class="col-md-2 gedf-main">
+                                            1322
+                                        </div>
+                                        <div class="col-md-3 gedf-main">
+                                            <a href="#" class="card-link"><i class="fa fa-arrow-down"></i> Down</a>
+                                        </div>
+                                        <div class="col-md-2 gedf-main">
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="col-md-3 gedf-main">
+                                    <a href="#" class="card-link"><i class="fa fa-comment"></i> Comment</a>
+                                </div>
+                                <div class="col-md-3 gedf-main">
+                                    <a href="#" class="card-link"><i class="fa fa-dot-circle-o"></i> Viewmore</a>
+                                </div>
+                            </div>
                         </div>
+
                     </div>
                     <br>
                     <br>
