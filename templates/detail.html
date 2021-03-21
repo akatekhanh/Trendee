@@ -1,0 +1,167 @@
+{%extends 'navbar.html'%}
+
+{%block css %}
+<link rel="stylesheet" href="{{url_for('static', filename='css/detail.css')}}">
+{%endblock%}
+
+{%block detail %}
+
+<div class="container-fluid gedf-wrapper">
+   <div class="row">
+      <div class="col-md-3"></div>
+      <div class="col-md-6 gedf-main">
+         <!-- Post /////-->
+
+
+         <!--- \\\\\\\Post-->
+         <div class="card gedf-card">
+            <div class="card-header">
+               <div class="d-flex justify-content-between align-items-center">
+                  <div class="d-flex justify-content-between align-items-center">
+                     <div class="mr-2">
+                        <img class="rounded-circle" width="45" src="https://picsum.photos/50/50" alt="">
+                     </div>
+                     <div class="ml-2">
+                        <div class="h5 m-0">@LeeCross</div>
+                        <div class="h7 text-muted">Miracles Lee Cross</div>
+                     </div>
+                  </div>
+                  <div>
+                     <div class="dropdown">
+                        <button class="btn btn-link dropdown-toggle" type="button" id="gedf-drop1"
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                           <i class="fa fa-ellipsis-h"></i>
+                        </button>
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="gedf-drop1">
+                           <div class="h6 dropdown-header">Configuration</div>
+                           <a class="dropdown-item" href="#">Save</a>
+                           <a class="dropdown-item" href="#">Hide</a>
+                           <a class="dropdown-item" href="#">Report</a>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+
+            </div>
+
+            <div class="card-body">
+               <div class="text-muted h7 mb-2"> <i class="fa fa-clock-o"></i> Hace 40 min</div>
+               <a class="card-link" href="#">
+                  <h5 class="card-title">Totam non adipisci hic! Possimus ducimus amet, dolores illo ipsum quos
+                     cum.</h5>
+               </a>
+
+               <p class="card-text">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam sunt fugit reprehenderit
+                  consectetur exercitationem odio,
+                  quam nobis? Officiis, similique, harum voluptate, facilis voluptas pariatur dolorum tempora
+                  sapiente
+                  eius maxime quaerat.
+                  <a href="https://mega.nz/#!1J01nRIb!lMZ4B_DR2UWi9SRQK5TTzU1PmQpDtbZkMZjAIbv97hU"
+                     target="_blank">https://mega.nz/#!1J01nRIb!lMZ4B_DR2UWi9SRQK5TTzU1PmQpDtbZkMZjAIbv97hU</a>
+               </p>
+            </div>
+            <div class="card-footer">
+               <div class="row">
+                  <div class="col-md-6 gedf-main">
+                     <div class="row">
+                        <div class="col-md-2 gedf-main">
+                        </div>
+                        <div class="col-md-2  gedf-main">
+                           <a id="up_vote" href="#" class="card-link"><i class="fa fa-arrow-up"></i> Up</a>
+                        </div>
+                        <div class="col-md-2 gedf-main">
+                           1322
+                        </div>
+                        <div class="col-md-3 gedf-main">
+                           <a id="down_vote" href="#" class="card-link"><i class="fa fa-arrow-down"></i> Down</a>
+                        </div>
+                        <div class="col-md-2 gedf-main">
+                        </div>
+                     </div>
+                  </div>
+                  <div class="col-md-3 gedf-main">
+                     <!-- <a href="#" class="card-link"><i class="fa fa-dot-circle-o"></i> Viewmore</a> -->
+                  </div>
+                  <div class="col-md-3 gedf-main">
+                     <a href="#" class="card-link"><i class="fa fa-comment"></i> Comment</a>
+                  </div>
+               </div>
+            </div>
+            <div class="card-footer">
+               <div class="flex-container">
+                  <img class="rounded-circle" width="45"
+                     src="https://scontent.fsgn2-2.fna.fbcdn.net/v/t1.0-9/96949143_1272860759576198_6761997971111280640_n.jpg?_nc_cat=103&ccb=1-3&_nc_sid=09cbfe&_nc_ohc=whk2SzZUVr4AX_1U4v1&_nc_ht=scontent.fsgn2-2.fna&oh=40aa6cf26b9c1735cbcd59e06d4ccd09&oe=607B61E7"
+                     alt="">
+                  <!-- <input class="form-control form-control-lg" type="text" placeholder="Comment here" id="comment"> -->
+                  <div class="col-md">
+                     <input type="text" class="form-control" placeholder="Comment here..." id="comment">
+                  </div>
+                  <div class="col-md-0">
+                     <button type="button" class="btn btn-light">
+                        <img src="../static/image/send_button.png" height="25px">
+                     </button>
+                  </div>
+               </div>
+            </div>
+
+            <!-- Show comment -->
+            <div class="card-header">
+               <div class="flex-container">
+                  <div class="mr-2">
+                     <img class="rounded-circle" width="45" src="https://picsum.photos/50/50" alt="">
+                  </div>
+                  <div class="ml-2">
+                     <div class="h5 m-0">@LeeCross</div>
+                     <div class="h7 text-muted">Miracles Lee Cross</div>
+                  </div>
+               </div>
+               <p></p>
+               <div class="flex-container">
+                  <div class="col-md-1"></div>
+                  <div class="col-md">
+                     <p>Nghỉ hè năm nay, em được bố mẹ cho đi nghỉ mát ở Sầm Sơn. Cảnh biển Sầm Sơn thật
+                        đẹp. Bầu trời cao, trong xanh không một gợn mây. Ông mặt trời tỏa ánh nắng chói chang xuống khắp
+                        nơi. Bãi cát vàng trong nắng càng trở nên lấp lánh, trông tuyệt đẹp.
+                     </p>
+                     <a href="#" class="card-link"><i class="fa fa-gittip"></i> Like</a>
+                     <span aria-hidden="true" class="_6cok">&nbsp;·&nbsp;</span>
+                     <a>2 hours ago</a>
+                  </div>
+               </div>
+            </div>
+
+            <div class="card-header">
+               <div class="flex-container">
+                  <div class="mr-2">
+                     <img class="rounded-circle" width="45" src="https://picsum.photos/50/50" alt="">
+                  </div>
+                  <div class="ml-2">
+                     <div class="h5 m-0">@MyName</div>
+                     <div class="h7 text-muted">My name</div>
+                  </div>
+               </div>
+               <p></p>
+               <div class="flex-container">
+                  <div class="col-md-1"></div>
+                  <div class="col-md">
+                     <p>Nước biển xanh và trong. Đứng gần biển em có thể nhìn thấy từng đợt sóng đánh vào
+                        bờ. Nhìn ra xa phía chân trời, bầu trời và biển như hòa vào làm một. Gió biển lồng lộng, cùng
+                        với tiếng sóng vỗ nghe thật vui tai.
+                     </p>
+                     <a href="#" class="card-link"><i class="fa fa-gittip"></i> Like</a>
+                     <span aria-hidden="true" class="_6cok">&nbsp;·&nbsp;</span>
+                     <a>2 hours ago</a>
+                  </div>
+               </div>
+            </div>
+            <!-- Show comment -->
+
+         </div>
+         <div style="margin-left: 45%;">
+            <a href="#" class="card-link"><i class="fa fa-dot-circle-o"></i> Viewmore</a>
+         </div>
+      </div>
+   </div>
+</div>
+{%endblock%}
