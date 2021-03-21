@@ -124,6 +124,10 @@ def create_app():
     def login():
         return render_template('login.html')
 
+    @app.route('/newsfeeds_trending')
+    def get_newsfeeds_trending():
+        return render_template('newsfeeds_trending.html') 
+
     @app.route('/newsfeeds')
     def get_newsfeeds():
         with open('api/data/trending/news.json', 'r') as file:
@@ -140,6 +144,8 @@ def create_app():
     @app.route('/detail')
     def get_detail():
         return render_template('detail.html')
+
+   
 
     # @app.route('/user/<str:username>', methods=['GET'])
     # def query_records():
