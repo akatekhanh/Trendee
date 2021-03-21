@@ -61,10 +61,20 @@ def create_app():
         id_belong = db.StringField()
         id_user = db.StringField()
         content = db.StringField(default='')
+        time = db.StringField()
+
+    class Vote(db.Document):
+        id_belong = db.StringField()
+        id_user = db.StringField()
+        is_up = db.BooleanField()
+        time = db.StringField()
 
     class Hashtag(db.Document):
         name = db.StringField()
-        score = db.IntField()
+        count_instagram = db.IntField()
+        count_twitter = db.IntField()
+        count_tiktok = db.IntField()
+        count_youtube = db.IntField()
 
     # class HashtagFacebook(Hashtag):
 
