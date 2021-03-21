@@ -147,6 +147,10 @@ def create_app():
         #     print(item['author_details'])
         return render_template('newsfeeds.html', data=result)
 
+    @app.route('/detail')
+    def get_detail():
+        return render_template('detail.html')
+
     # @app.route('/user/<str:username>', methods=['GET'])
     # def query_records():
     #     user = User.objects(username=username).first()
