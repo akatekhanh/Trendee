@@ -68,20 +68,32 @@
                         <div class="col-md-2 gedf-main">
                         </div>
                         <div class="col-md-2  gedf-main">
-                           <a id="up_vote" href="#" class="card-link"><i class="fa fa-arrow-up"></i> Up</a>
+                           <a id="up_vote" onclick="do_something(this.id)" href="" class="card-link"><i
+                                 class="fa fa-arrow-up"></i> Up</a>
                         </div>
-                        <div class="col-md-2 gedf-main">
-                           1322
+                        <div id="num_of_vote" class="col-md-2 gedf-main">
+                           12
                         </div>
                         <div class="col-md-3 gedf-main">
-                           <a id="down_vote" href="#" class="card-link"><i class="fa fa-arrow-down"></i> Down</a>
+                           <a id="down_vote" onclick="do_something(this.id)" href="" class="card-link"><i
+                                 class="fa fa-arrow-down"></i> Down</a>
                         </div>
                         <div class="col-md-2 gedf-main">
                         </div>
                      </div>
+                     <!-- <script>
+                        function do_something(clicked_id) {
+                           var x = parseInt(document.getElementById("num_of_vote").innerText) + 1;
+                           document.getElementById('num_of_vote').innerText = x.toString();
+                           var xhttp = new XMLHttpRequest();
+                           if (clicked_id == "up_vote")
+                              xhttp.send("up_vote");
+                           else
+                              xhttp.send("down_vote");
+                        }
+                     </script> -->
                   </div>
                   <div class="col-md-3 gedf-main">
-                     <!-- <a href="#" class="card-link"><i class="fa fa-dot-circle-o"></i> Viewmore</a> -->
                   </div>
                   <div class="col-md-3 gedf-main">
                      <a href="#" class="card-link"><i class="fa fa-comment"></i> Comment</a>
@@ -126,7 +138,7 @@
                      </p>
                      <a href="#" class="card-link"><i class="fa fa-gittip"></i> Like</a>
                      <span aria-hidden="true" class="_6cok">&nbsp;·&nbsp;</span>
-                     <a>2 hours ago</a>
+                     <a><small>2 hours ago</small></a>
                   </div>
                </div>
             </div>
@@ -151,7 +163,7 @@
                      </p>
                      <a href="#" class="card-link"><i class="fa fa-gittip"></i> Like</a>
                      <span aria-hidden="true" class="_6cok">&nbsp;·&nbsp;</span>
-                     <a>2 hours ago</a>
+                     <a><small>2 hours ago</small></a>
                   </div>
                </div>
             </div>
