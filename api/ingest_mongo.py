@@ -14,6 +14,7 @@ class Article(Document):
     trending_score = IntField()
     title = StringField()
     url_image = URLField()
+    url_article = URLField()
     fb_like = StringField()
     fb_share = StringField()
     youtube_like = StringField()
@@ -24,8 +25,7 @@ class Article(Document):
     total_react = StringField()
 
 
-list_topic = ['news', 'sports', 'tech', 'business', 'science', 'polictics',
-              'marketing', 'education', 'fashion', 'health', 'video', 'entertainment']
+list_topic = ['news']
 for kind in list_topic:
     print(kind)
     with open('data/trending/' + kind + '.json', 'r') as file:
@@ -45,6 +45,7 @@ for kind in list_topic:
             trending_score=item['trending_score'],
             title=item['title'],
             url_image=item['thumbnail'],
+            url_article=item['url'],
             fb_like=item['facebook_likes'] if isinstance(
                 item['facebook_likes'], str) else str(item['facebook_likes']),
             fb_share=item['facebook_shares'] if isinstance(

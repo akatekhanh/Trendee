@@ -69,12 +69,12 @@
                                     </div>
                                     <div class="ml-2">
                                         <div class="h5 m-0">
-                                            {%if item['author_details']['twitter']%}
-                                            @{{item['author_details']['twitter']['username']}}
+                                            {%if item['twitter'] != 'None'%}
+                                            @{{item['twitter']}}
                                             {%else%}@Anonymous
                                             {%endif%}
                                         </div>
-                                        <div class="h7 text-muted">{{item['author_details']['author_name']}}</div>
+                                        <div class="h7 text-muted">{{item['author_name']}}</div>
                                     </div>
                                     <div class="ml-5">
                                         <div class="h5 m-0"></div>
@@ -82,13 +82,13 @@
                                     </div>
                                     <div class="ml-5">
                                         <div class="h6 m-0 text-info">Publisher Rank
-                                            :{{item['author_details']['publisher']['alexa_rank']}}</div>
+                                            :{{item['publisher_rank']}}</div>
                                         <div class="h7 text-muted text-warning" style="font-size:10px;">Argv facebook
-                                            share: {{item['author_details']['publisher']['average_facebook_shares']}}
+                                            share: {{item['avg_fb_share']}}
                                         </div>
                                         <div class="h7 text-muted text-warning" style="font-size:10px;">Domain
                                             authority:
-                                            {{item['author_details']['publisher']['domain_authority']}} </div>
+                                            {{item['domain_authority']}} </div>
                                     </div>
                                 </div>
                                 <div>
@@ -119,8 +119,8 @@
                             <h5 class="card-title">{{item['title']}}</h5>
 
                             <p class="card-text">
-                                <img src="{{item['thumbnail']}}" alt="" width="100%;">
-                                <a href="{{item['url']}}" target="_blank"><i style="color:gray;">Go to article</i></a>
+                                <img src="{{item['url_image']}}" alt="" width="100%;">
+                                <!-- <a href="{{item['url']}}" target="_blank"><i style="color:gray;">Go to article</i></a> -->
                             </p>
 
                             <div class="">
@@ -132,10 +132,10 @@
                                                 class="fa fa-facebook"></i> </a>
                                         <div class="d-flex-column">
                                             <div class="">
-                                                <h6><small>Likes: {{item['facebook_likes']}}</small></h6>
+                                                <h6><small>Likes: {{item['fb_like']}}</small></h6>
                                             </div>
                                             <div class="">
-                                                <h6><small>Shares: {{item['facebook_shares']}}</small></h6>
+                                                <h6><small>Shares: {{item['fb_share']}}</small></h6>
                                             </div>
                                         </div>
 
@@ -165,7 +165,7 @@
                                                 <h6><small>Likes:{{None}}</small></h6>
                                             </div>
                                             <div class="">
-                                                <h6><small>Shares: {{item['twitter_shares']}}</small></h6>
+                                                <h6><small>Shares: {{item['twitter_share']}}</small></h6>
                                             </div>
                                         </div>
 
@@ -178,11 +178,11 @@
                                                 class="fa fa-reddit"></i> </a>
                                         <div class="d-flex-column">
                                             <div class="">
-                                                <h6><small>Total share: {{item['total_shares']}}</small></h6>
+                                                <h6><small>Total share: {{item['total_share']}}</small></h6>
                                             </div>
                                             <div class="">
                                                 <h6><small>Total reactions:
-                                                        {{item['total_reactions_percentage']}}</small></h6>
+                                                        {{item['total_react']}}</small></h6>
                                             </div>
                                         </div>
 
@@ -214,10 +214,12 @@
                                     </div>
                                 </div>
                                 <div class="col-md-3 gedf-main">
-                                    <a href="#" class="card-link"><i class="fa fa-comment"></i> Comment</a>
+                                    <a href="{{url_for('get_detail', _id=item['_id'])}}" class="card-link"><i
+                                            class="fa fa-comment"></i>Comment</a>
                                 </div>
                                 <div class="col-md-3 gedf-main">
-                                    <a href="#" class="card-link"><i class="fa fa-dot-circle-o"></i> Viewmore</a>
+                                    <a href="{{item['url_article']}}" class="card-link"><i
+                                            class="fa fa-dot-circle-o"></i> Viewmore</a>
                                 </div>
                             </div>
                         </div>

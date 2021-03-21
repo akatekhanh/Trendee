@@ -7,10 +7,15 @@ import json
 from flask import Flask, render_template_string, request, jsonify, render_template, session, redirect, url_for
 from flask_mongoengine import MongoEngine
 from flask_pymongo import PyMongo
+import pymongo
 from flask_user import login_required, UserManager, UserMixin, current_user
-
+myclient = pymongo.MongoClient('mongodb://localhost:27017/db_trendee')
+mydb = myclient["db_trendee"]
+mycol = mydb['article']
 
 # Class-based application configuration
+
+
 class ConfigClass(object):
     """ Flask application config """
 
@@ -76,13 +81,8 @@ def create_app():
         count_tiktok = db.IntField()
         count_youtube = db.IntField()
 
-    # class HashtagFacebook(Hashtag):
-
-    # Setup Flask-User and specify the User data-model
     user_manager = UserManager(app, db, User)
-    # user_manager_1 = UserManager(app, db, Comment)
 
-    # The Home page is accessible to anyone
     @app.route('/')
     def home_page():
         try:
@@ -90,23 +90,14 @@ def create_app():
         except:
             return redirect('/user/sign-in')
         return redirect(url_for('get_newsfeeds'))
-        # return render_template_string("""
-        #     {% extends "flask_user_layout.html" %}
-        #     {% block content %}
-        #         <h2>Home page</h2>
-        #         <p><a href={{ url_for('user.register') }}>Register</a></p>
-        #         <p><a href={{ url_for('user.login') }}>Sign in</a></p>
-        #         <p><a href={{ url_for('home_page') }}>Home page</a> (accessible to anyone)</p>
-        #         <p><a href={{ url_for('member_page') }}>Member page</a> (login required)</p>
-        #         <p><a href={{ url_for('user.logout') }}>Sign out</a></p>
-        #     {% endblock %}
-        #     """)
 
-        # The Members page is only accessible to authenticated users via the @login_required decorator
+    @app.route('/detail')
+    def detail_article():
+        return render_template('detail.html')
+
     @app.route('/members')
-    @login_required    # User must be authenticated
+    @login_required
     def member_page():
-        # String-based templates
         return render_template_string("""
             {% extends "flask_user_layout.html" %}
             {% block content %}
@@ -136,58 +127,78 @@ def create_app():
 
     @app.route('/newsfeeds')
     def get_newsfeeds():
-        with open('api/data/trending/news.json', 'r') as file:
-            data = json.load(file)
+        result = []
+        for item in mycol.find():
+            result.append(item)
+        # with open('api/data/trending/news.json', 'r') as file:
+        #     data = json.load(file)
 
         # data = json.dumps(data)
-        result = data['results']
         # for item in result:
         #     hours = item['published_date_diff']
         #     title = item['title']
         #     print(item['author_details'])
         return render_template('newsfeeds.html', data=result)
 
-    @app.route('/detail')
-    def get_detail():
-        return render_template('detail.html')
+    @app.route('/detail/<_id>')
+    def get_detail(_id):
+        result = []
+        for item in mycol.find():
+            if str(item['_id']) == _id:
+                result.append(item)
 
-    # @app.route('/user/<str:username>', methods=['GET'])
-    # def query_records():
-    #     user = User.objects(username=username).first()
-    #     if not user:
-    #         return jsonify({'error': 'data not found'})
-    #     else:
-    #         return jsonify(user.to_json())
+        return render_template('detail.html', data=result)
 
-    # @app.route('/user', methods=['PUT'])
-    # def create_record():
-    #     record = json.loads(request.data)
-    #     user = User(first_name=record['first_name'],
-    #                 last_name=record['last_name'],
-    #                 email=record['email'])
-    #     user.save()
-    #     return jsonify(user.to_json())
+    @app.route('/comment/<_id>')
+    def add_comment(_id, text):
+        from datetime import datetime
+        mycol = mydb['user']
+        username = current_user.username
+        id_user = ''
+        for item in mycol.find():
+            if item['username'] == username:
+                id_user = str(item['_id'])
 
-    # @app.route('/', methods=['POST'])
-    # def update_record():
-    #     record = json.loads(request.data)
-    #     user = User.objects(name=record['name']).first()
-    #     if not user:
-    #         return jsonify({'error': 'data not found'})
-    #     else:
-    #         user.update(email=record['email'])
-    #     return jsonify(user.to_json())
+        comment = Comment(
+            id_belong=_id,
+            id_user=id_user,
+            content="Toi la ai",
+            time="abc")
+        comment.save()
 
-    # @app.route('/', methods=['DELETE'])
-    # def delete_record():
-    #     record = json.loads(request.data)
-    #     user = User.objects(name=record['name']).first()
-    #     if not user:
-    #         return jsonify({'error': 'data not found'})
-    #     else:
-    #         user.delete()
-    #     return jsonify(user.to_json())
-
+        # @app.route('/user/<str:username>', methods=['GET'])
+        # def query_records():
+        #     user = User.objects(username=username).first()
+        #     if not user:
+        #         return jsonify({'error': 'data not found'})
+        #     else:
+        #         return jsonify(user.to_json())
+        # @app.route('/user', methods=['PUT'])
+        # def create_record():
+        #     record = json.loads(request.data)
+        #     user = User(first_name=record['first_name'],
+        #                 last_name=record['last_name'],
+        #                 email=record['email'])
+        #     user.save()
+        #     return jsonify(user.to_json())
+        # @app.route('/', methods=['POST'])
+        # def update_record():
+        #     record = json.loads(request.data)
+        #     user = User.objects(name=record['name']).first()
+        #     if not user:
+        #         return jsonify({'error': 'data not found'})
+        #     else:
+        #         user.update(email=record['email'])
+        #     return jsonify(user.to_json())
+        # @app.route('/', methods=['DELETE'])
+        # def delete_record():
+        #     record = json.loads(request.data)
+        #     user = User.objects(name=record['name']).first()
+        #     if not user:
+        #         return jsonify({'error': 'data not found'})
+        #     else:
+        #         user.delete()
+        #     return jsonify(user.to_json())
     return app
 
 
