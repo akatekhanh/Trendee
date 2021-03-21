@@ -2,7 +2,7 @@
 
 {%block newsfeeds %}
 
-<div class="container-fluid gedf-wrapper">
+<div class="container-fluid gedf-wrapper" style="margin-top: 80px;">
     <div class="row">
         <div class="col-md-1 gedf-main"></div>
 
@@ -127,9 +127,10 @@
                                 <div class="d-flex justify-content-around ">
                                     <!-- Facebook -->
                                     <div class="d-flex d-flex-row">
-                                        <a href="http://scripteden.com/download/eden-ui/" target="_blank"
-                                            class="btn-social btn-facebook" style="margin-top:5px;margin-right:5px;"><i
-                                                class="fa fa-facebook"></i> </a>
+                                        <a>
+                                            <img src="/static/image/iconfinder_facebook_386622_1.png" alt=""
+                                                style="height: 20px;margin-top:15px;margin-right:15px;">
+                                        </a>
                                         <div class="d-flex-column">
                                             <div class="">
                                                 <h6><small>Likes: {{item['fb_like']}}</small></h6>
@@ -142,9 +143,10 @@
                                     </div>
 
                                     <div class="d-flex d-flex-row">
-                                        <a href="http://scripteden.com/download/eden-ui/" target="_blank"
-                                            class="btn-social btn-youtube" style="margin-top:5px;margin-right:5px;"><i
-                                                class="fa fa-youtube"></i> </a>
+                                        <a>
+                                            <img src="/static/image/youtube.png" alt=""
+                                                style="height: 20px;margin-top:15px;margin-right:15px;">
+                                        </a>
                                         <div class="d-flex-column">
                                             <div class="">
                                                 <h6><small>Likes: {{item['youtube_likes']}}</small></h6>
@@ -157,9 +159,10 @@
                                     </div>
 
                                     <div class="d-flex d-flex-row">
-                                        <a href="http://scripteden.com/download/eden-ui/" target="_blank"
-                                            class="btn-social btn-twitter" style="margin-top:5px;margin-right:5px;"><i
-                                                class="fa fa-twitter"></i> </a>
+                                        <a>
+                                            <img src="/static/image/iconfinder_twitter_circle_294709_1.png" alt=""
+                                                style="height: 20px;margin-top:15px;margin-right:15px;">
+                                        </a>
                                         <div class="d-flex-column">
                                             <div class="">
                                                 <h6><small>Likes:{{None}}</small></h6>
@@ -173,9 +176,10 @@
 
 
                                     <div class="d-flex d-flex-row">
-                                        <a href="http://scripteden.com/download/eden-ui/" target="_blank"
-                                            class="btn-social btn-reddit" style="margin-top:5px;margin-right:5px;"><i
-                                                class="fa fa-reddit"></i> </a>
+                                        <a>
+                                            <img src="/static/image/reddit.png" alt=""
+                                                style="height: 20px;margin-top:15px;margin-right:15px;">
+                                        </a>
                                         <div class="d-flex-column">
                                             <div class="">
                                                 <h6><small>Total share: {{item['total_share']}}</small></h6>
@@ -200,13 +204,15 @@
                                         <div class="col-md-2 gedf-main">
                                         </div>
                                         <div class="col-md-3  gedf-main">
-                                            <a href="#" class="card-link"><i class="fa fa-arrow-up"></i> Up</a>
+                                            <a href="#" style="color: #60b27f" class="card-link"><i
+                                                    class="fa fa-arrow-up"></i> Up</a>
                                         </div>
-                                        <div class="col-md-2 gedf-main">
+                                        <div class="col-md-3 gedf-main">
                                             1322
                                         </div>
                                         <div class="col-md-3 gedf-main">
-                                            <a href="#" class="card-link"><i class="fa fa-arrow-down"></i> Down</a>
+                                            <a href="#" style="color: #60b27f" class="card-link"><i
+                                                    class="fa fa-arrow-down"></i> Down</a>
                                         </div>
                                         <div class="col-md-2 gedf-main">
                                         </div>
@@ -239,45 +245,46 @@
         <div class="col-md-3">
             <div class="card gedf-card">
                 <div class="card-body">
-                    <h5 class="card-title">Top 5 trendings</h5>
-                    <h6 class="card-subtitle mb-2 text-muted">Top 5 trendings over some social media</h6>
+                    <h5 class="card-title">Top 5 News</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">Top 5 News over some social media</h6>
                     <p class="card-text">
                     <ul class="list-group">
+                        {%for item in data%}
                         <li class="list-group-item d-flex justify-content-between align-items-center">
-                            <a href="#">#trend1</a>
+                            <a style="color: #60b27f" href="#">#news1</a>
                             <span class="badge badge-light badge-pill">
                                 <img src="/static/image/iconfinder_facebook_386622_1.png" style="height: 15px;">
                             </span>
                         </li>
-                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                            <a href="#">#trend2</a>
+                        {%endfor%}
+                        <!-- <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <a style="color: #60b27f" href="#">#news2</a>
                             <span class="badge badge-light badge-pill">
                                 <img src="/static/image/iconfinder_tiktok_logo_app0_7024783_1.png"
                                     style="height: 15px;">
                             </span>
                         </li>
                         <li class="list-group-item d-flex justify-content-between align-items-center">
-                            <a href="#">#trend3</a>
+                            <a style="color: #60b27f" href="#">#news3</a>
                             <span class="badge badge-light badge-pill">
                                 <img src="/static/image/iconfinder_facebook_386622_1.png" style="height: 15px;">
                             </span>
                         </li>
                         <li class="list-group-item d-flex justify-content-between align-items-center">
-                            <a href="#">#trend4</a>
+                            <a style="color: #60b27f" href="#">#news4</a>
                             <span class="badge badge-light badge-pill">
                                 <img src="/static/image/iconfinder_twitter_circle_294709_1.png" style="height: 15px;">
                             </span>
                         </li>
                         <li class="list-group-item d-flex justify-content-between align-items-center">
-                            <a href="#">#trend5</a>
+                            <a style="color: #60b27f" href="#">#news5</a>
                             <span class="badge badge-light badge-pill">
                                 <img src="/static/image/iconfinder_tiktok_logo_app0_7024783_1.png"
                                     style="height: 15px;">
                             </span>
-                        </li>
+                        </li> -->
                     </ul>
                     </p>
-                    <a href="#" class="card-link">View more...</a>
                 </div>
             </div>
         </div>

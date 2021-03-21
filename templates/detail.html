@@ -6,7 +6,7 @@
 
 {%block detail %}
 
-<div class="container-fluid gedf-wrapper">
+<div class="container-fluid gedf-wrapper" style="margin-top: 80px;">
    <div class="row">
       <div class="col-md-3"></div>
       <div class="col-md-6 gedf-main">
@@ -87,9 +87,10 @@
                         <div class="d-flex justify-content-around ">
                            <!-- Facebook -->
                            <div class="d-flex d-flex-row">
-                              <a href="http://scripteden.com/download/eden-ui/" target="_blank"
-                                 class="btn-social btn-facebook" style="margin-top:5px;margin-right:5px;"><i
-                                    class="fa fa-facebook"></i> </a>
+                              <a>
+                                 <img src="/static/image/iconfinder_facebook_386622_1.png" alt=""
+                                    style="height: 20px;margin-top:15px;margin-right:15px;">
+                              </a>
                               <div class="d-flex-column">
                                  <div class="">
                                     <h6><small>Likes: {{item['fb_like']}}</small></h6>
@@ -102,9 +103,10 @@
                            </div>
 
                            <div class="d-flex d-flex-row">
-                              <a href="http://scripteden.com/download/eden-ui/" target="_blank"
-                                 class="btn-social btn-youtube" style="margin-top:5px;margin-right:5px;"><i
-                                    class="fa fa-youtube"></i> </a>
+                              <a>
+                                 <img src="/static/image/youtube.png" alt=""
+                                    style="height: 20px;margin-top:15px;margin-right:15px;">
+                              </a>
                               <div class="d-flex-column">
                                  <div class="">
                                     <h6><small>Likes: {{item['youtube_likes']}}</small></h6>
@@ -117,9 +119,10 @@
                            </div>
 
                            <div class="d-flex d-flex-row">
-                              <a href="http://scripteden.com/download/eden-ui/" target="_blank"
-                                 class="btn-social btn-twitter" style="margin-top:5px;margin-right:5px;"><i
-                                    class="fa fa-twitter"></i> </a>
+                              <a>
+                                 <img src="/static/image/iconfinder_twitter_circle_294709_1.png" alt=""
+                                    style="height: 20px;margin-top:15px;margin-right:15px;">
+                              </a>
                               <div class="d-flex-column">
                                  <div class="">
                                     <h6><small>Likes:{{None}}</small></h6>
@@ -133,9 +136,10 @@
 
 
                            <div class="d-flex d-flex-row">
-                              <a href="http://scripteden.com/download/eden-ui/" target="_blank"
-                                 class="btn-social btn-reddit" style="margin-top:5px;margin-right:5px;"><i
-                                    class="fa fa-reddit"></i> </a>
+                              <a>
+                                 <img src="/static/image/reddit.png" alt=""
+                                    style="height: 20px;margin-top:15px;margin-right:15px;">
+                              </a>
                               <div class="d-flex-column">
                                  <div class="">
                                     <h6><small>Total share: {{item['total_share']}}</small></h6>
@@ -182,8 +186,18 @@
                               Viewmore</a>
                         </div>
                      </div>
+                     <!-- <script>
+                        function do_something(clicked_id) {
+                           var x = parseInt(document.getElementById("num_of_vote").innerText) + 1;
+                           document.getElementById('num_of_vote').innerText = x.toString();
+                           var xhttp = new XMLHttpRequest();
+                           if (clicked_id == "up_vote")
+                              xhttp.send("up_vote");
+                           else
+                              xhttp.send("down_vote");
+                        }
+                     </script> -->
                   </div>
-
                </div>
                <br>
                <br>
@@ -212,6 +226,7 @@
             </div>
 
             <!-- Show comment -->
+            <!-- For -->
             <div class="card-header">
                <div class="flex-container">
                   <div class="mr-2">
@@ -230,42 +245,17 @@
                         đẹp. Bầu trời cao, trong xanh không một gợn mây. Ông mặt trời tỏa ánh nắng chói chang xuống khắp
                         nơi. Bãi cát vàng trong nắng càng trở nên lấp lánh, trông tuyệt đẹp.
                      </p>
-                     <a href="#" class="card-link"><i class="fa fa-gittip"></i> Like</a>
+                     <a href="#" style="color: #60b27f" class="card-link"><i class="fa fa-gittip"></i> Like</a>
                      <span aria-hidden="true" class="_6cok">&nbsp;·&nbsp;</span>
-                     <a>2 hours ago</a>
+                     <a><small>2 hours ago</small></a>
                   </div>
                </div>
             </div>
-
-            <div class="card-header">
-               <div class="flex-container">
-                  <div class="mr-2">
-                     <img class="rounded-circle" width="45" src="https://picsum.photos/50/50" alt="">
-                  </div>
-                  <div class="ml-2">
-                     <div class="h5 m-0">@MyName</div>
-                     <div class="h7 text-muted">My name</div>
-                  </div>
-               </div>
-               <p></p>
-               <div class="flex-container">
-                  <div class="col-md-1"></div>
-                  <div class="col-md">
-                     <p>Nước biển xanh và trong. Đứng gần biển em có thể nhìn thấy từng đợt sóng đánh vào
-                        bờ. Nhìn ra xa phía chân trời, bầu trời và biển như hòa vào làm một. Gió biển lồng lộng, cùng
-                        với tiếng sóng vỗ nghe thật vui tai.
-                     </p>
-                     <a href="#" class="card-link"><i class="fa fa-gittip"></i> Like</a>
-                     <span aria-hidden="true" class="_6cok">&nbsp;·&nbsp;</span>
-                     <a>2 hours ago</a>
-                  </div>
-               </div>
-            </div>
-            <!-- Show comment -->
+            <!-- End for -->
 
          </div>
          <div style="margin-left: 45%;">
-            <a href="#" class="card-link"><i class="fa fa-dot-circle-o"></i> Viewmore</a>
+            <a href="#" style="color: #60b27f" class="card-link"><i class="fa fa-arrow-circle-o-down"></i> Viewmore</a>
          </div>
       </div>
    </div>

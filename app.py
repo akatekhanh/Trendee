@@ -125,6 +125,10 @@ def create_app():
     def login():
         return render_template('login.html')
 
+    @app.route('/newsfeeds_trending')
+    def get_newsfeeds_trending():
+        return render_template('newsfeeds_trending.html')
+
     @app.route('/newsfeeds')
     def get_newsfeeds():
         result = []
