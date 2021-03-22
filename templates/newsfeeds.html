@@ -1,7 +1,8 @@
 {%extends 'navbar.html'%}
 
 {%block newsfeeds %}
-
+<link rel="stylesheet" href="https://res.cloudinary.com/dxfq3iotg/raw/upload/v1569006288/BBBootstrap/choices.min.css?version=7.0.0">
+<script src="https://res.cloudinary.com/dxfq3iotg/raw/upload/v1569006273/BBBootstrap/choices.min.js?version=7.0.0"></script>
 <div class="container-fluid gedf-wrapper" style="margin-top: 80px;">
     <div class="row">
         <div class="col-md-1 gedf-main"></div>
@@ -243,6 +244,20 @@
 
         </div>
         <div class="col-md-3">
+            <form action = "http://localhost:5000/newsfeeds" method = "GET">
+                <select id="choices-multiple-remove-button" placeholder="Select tags" multiple >
+                    <option value="news">news</option>
+                    <option value="sports">sports</option>
+                    <option value="tech">technology</option>
+                    <option value="business">business</option>
+                    <option value="science">science</option>
+                    <option value="education">education</option>
+                    <option value="fashion">fashion</option>
+                    <option value="health">healthy</option>
+                    <option value="video">video</option>
+                    <option value="entertainment">entertainment</option>
+                </select>
+             </form>
             <div class="card gedf-card">
                 <div class="card-body">
                     <h5 class="card-title">Top 5 News</h5>
@@ -303,4 +318,32 @@
         <div class="col-md-1 gedf-main"></div>
     </div>
 </div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script>
+     $(document).ready(function(){
+
+        var multipleCancelButton = new Choices('#choices-multiple-remove-button', {
+        removeItemButton: true,
+        maxItemCount:5,
+        searchResultLimit:5,
+        renderChoiceLimit:5
+        });
+        console.log(multipleCancelButton);
+        $(function() {
+            $("#choices-multiple-remove-button").change(function() {
+                const values = multipleCancelButton.getValue(true);
+                console.log(values)
+                jQuery.ajax({
+                url: "/newsfeeds",
+                type: "GET",
+                dataType: 'json',
+                data: JSON.stringify(values),
+                success: function(data) {
+                    console.log("OK get request");
+                }
+                });
+            });
+        });
+});
+</script>
 {%endblock%}

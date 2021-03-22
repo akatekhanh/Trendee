@@ -129,8 +129,10 @@ def create_app():
     def get_newsfeeds_trending():
         return render_template('newsfeeds_trending.html')
 
-    @app.route('/newsfeeds')
+    @app.route('/newsfeeds', methods=['GET'])
     def get_newsfeeds():
+        print(request.form.getlist('choices-multiple-remove-button'))
+        
         result = []
         for item in mycol.find():
             result.append(item)
@@ -143,7 +145,7 @@ def create_app():
         #     title = item['title']
         #     print(item['author_details'])
         return render_template('newsfeeds.html', data=result)
-
+    
     @app.route('/detail/<_id>')
     def get_detail(_id):
         result = []
