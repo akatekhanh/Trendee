@@ -10,6 +10,7 @@ from flask_pymongo import PyMongo
 import pymongo
 from flask_user import login_required, UserManager, UserMixin, current_user
 myclient = pymongo.MongoClient('mongodb://localhost:27017/db_trendee')
+
 mydb = myclient["db_trendee"]
 mycol = mydb['article']
 
@@ -129,22 +130,23 @@ def create_app():
     def get_newsfeeds_trending():
         return render_template('newsfeeds_trending.html')
 
-    @app.route('/newsfeeds', methods=['GET'])
+    @app.route('/newsfeeds/', methods=['GET'])
     def get_newsfeeds():
-        print(request.form.getlist('choices-multiple-remove-button'))
-        
-        result = []
-        for item in mycol.find():
-            result.append(item)
-        # with open('api/data/trending/news.json', 'r') as file:
-        #     data = json.load(file)
+        article = request.args.getlist('choices-multiple-remove-button')
 
-        # data = json.dumps(data)
-        # for item in result:
-        #     hours = item['published_date_diff']
-        #     title = item['title']
-        #     print(item['author_details'])
+        list_request = [i for i in article]
+        result = []
+        for i in list_request:
+            for item in mycol.find({'kind': i}):
+                if not item in result:
+                    result.append(item)
+        # for item in mycol.find():
+        #     result.append(item)
+        print(result)
+        result = sorted(result, key=lambda k: k['publisher_rank']) 
         return render_template('newsfeeds.html', data=result)
+            # return redirect("/newsfeeds?", code=302)
+        # return render_template('newsfeeds.html', data=result)
     
     @app.route('/detail/<_id>')
     def get_detail(_id):

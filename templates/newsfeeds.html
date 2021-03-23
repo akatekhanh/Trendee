@@ -1,8 +1,7 @@
 {%extends 'navbar.html'%}
 
 {%block newsfeeds %}
-<link rel="stylesheet" href="https://res.cloudinary.com/dxfq3iotg/raw/upload/v1569006288/BBBootstrap/choices.min.css?version=7.0.0">
-<script src="https://res.cloudinary.com/dxfq3iotg/raw/upload/v1569006273/BBBootstrap/choices.min.js?version=7.0.0"></script>
+
 <div class="container-fluid gedf-wrapper" style="margin-top: 80px;">
     <div class="row">
         <div class="col-md-1 gedf-main"></div>
@@ -67,6 +66,10 @@
                                 <div class="d-flex justify-content-between ">
                                     <div class="mr-2">
                                         <img class="rounded-circle" width="45" src="https://picsum.photos/50/50" alt="">
+                                    </div>
+                                    <div class="ml-2">
+                                        <h4><span class="badge badge-secondary" style="color:black;background-color:aqua ;
+                                            ">{{item['kind']}}</span></h4>
                                     </div>
                                     <div class="ml-2">
                                         <div class="h5 m-0">
@@ -245,7 +248,7 @@
         </div>
         <div class="col-md-3">
             <form action = "http://localhost:5000/newsfeeds" method = "GET">
-                <select id="choices-multiple-remove-button" placeholder="Select tags" multiple >
+                <select id="choices-multiple-remove-button" name="choices-multiple-remove-button" placeholder="Select tags" multiple >
                     <option value="news">news</option>
                     <option value="sports">sports</option>
                     <option value="tech">technology</option>
@@ -257,6 +260,7 @@
                     <option value="video">video</option>
                     <option value="entertainment">entertainment</option>
                 </select>
+                <button type="submit" id="search" class="btn btn-primary">Submit</button>
              </form>
             <div class="card gedf-card">
                 <div class="card-body">
@@ -318,8 +322,14 @@
         <div class="col-md-1 gedf-main"></div>
     </div>
 </div>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
 <script>
+    function toObject(arr) {
+        var rv = {};
+        for (var i = 0; i < arr.length; ++i)
+            rv[arr[i]]= true;
+        return rv;
+    }
      $(document).ready(function(){
 
         var multipleCancelButton = new Choices('#choices-multiple-remove-button', {
@@ -329,21 +339,30 @@
         renderChoiceLimit:5
         });
         console.log(multipleCancelButton);
-        $(function() {
-            $("#choices-multiple-remove-button").change(function() {
-                const values = multipleCancelButton.getValue(true);
-                console.log(values)
-                jQuery.ajax({
-                url: "/newsfeeds",
-                type: "GET",
-                dataType: 'json',
-                data: JSON.stringify(values),
-                success: function(data) {
-                    console.log("OK get request");
-                }
-                });
-            });
-        });
+        // ajax have some problem should be i change to form
+        // $(function() {
+        //     $("#choices-multiple-remove-button").change(function() {
+        //         const values = multipleCancelButton.getValue(true);
+        //         let json_list = toObject(values);
+        //         console.log(json_list);
+        //         jQuery.ajax({
+        //         url: "/newsfeeds",
+        //         type: "GET",
+        //         dataType: 'html',
+        //         data: json_list,
+        //         success: function(response) {
+        //             document.write(response );
+        //         }
+        //         });
+        //     });
+        // });
+
+        //When user change options reload page but lost choice pre
+        // $(function(){
+        //     $("#choices-multiple-remove-button").change(function(){
+        //         $("#search").click();
+        //     })
+        // })
 });
 </script>
 {%endblock%}

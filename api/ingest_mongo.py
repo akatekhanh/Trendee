@@ -27,8 +27,7 @@ class Article(Document):
 
 
 #insert to data temporarily ok
-list_topic = ['news', 'sports', 'tech', 'business', 'science',
-                  'marketing', 'education', 'fashion', 'health', 'video', 'entertainment']
+
 for kind in list_topic:
     print(kind)
     with open('data/trending/' + kind + '.json', 'r') as file:
