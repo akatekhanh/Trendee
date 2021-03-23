@@ -83,7 +83,7 @@ def main():
     program = Run()
     program.login()
 
-    list_topic = ['news', 'sports', 'tech', 'business', 'science', 'polictics',
+    list_topic = ['news', 'sports', 'tech', 'business', 'science',
                   'marketing', 'education', 'fashion', 'health', 'video', 'entertainment']
 
     # for item in list_topic:
